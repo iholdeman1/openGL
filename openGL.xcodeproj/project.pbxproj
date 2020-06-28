@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		912EC60524A939A300D13CE7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E292239C686D009563D3 /* OpenGL.framework */; };
+		912EC60624A93F6700D13CE7 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
-		91F3E293239C686D009563D3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E292239C686D009563D3 /* OpenGL.framework */; };
-		91F3E295239C6888009563D3 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		912EC60724A9408400D13CE7 /* openGL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = openGL.entitlements; sourceTree = "<group>"; };
 		91F3E283239C6795009563D3 /* openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F3E286239C6795009563D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		91F3E28E239C67A6009563D3 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = ../../../../../usr/local/Cellar/glfw/3.3/include/GLFW/glfw3.h; sourceTree = "<group>"; };
@@ -51,8 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91F3E295239C6888009563D3 /* libglfw.3.3.dylib in Frameworks */,
-				91F3E293239C686D009563D3 /* OpenGL.framework in Frameworks */,
+				912EC60624A93F6700D13CE7 /* libglfw.3.3.dylib in Frameworks */,
+				912EC60524A939A300D13CE7 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +80,7 @@
 		91F3E285239C6795009563D3 /* openGL */ = {
 			isa = PBXGroup;
 			children = (
+				912EC60724A9408400D13CE7 /* openGL.entitlements */,
 				91F3E286239C6795009563D3 /* main.cpp */,
 			);
 			path = openGL;
@@ -282,6 +284,7 @@
 		91F3E28B239C6795009563D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = openGL/openGL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MXYX4524CL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -297,6 +300,7 @@
 		91F3E28C239C6795009563D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = openGL/openGL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MXYX4524CL;
 				ENABLE_HARDENED_RUNTIME = YES;
