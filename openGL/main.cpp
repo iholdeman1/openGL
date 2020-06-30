@@ -83,7 +83,7 @@ int main(int argc, const char *argv[]) {
   glfwSetFramebufferSizeCallback(window, frame_buffer_size_callback);
 
   // Setup shader class
-  Shader shader("shader.vs", "shader.fs");
+  Shader shader("shader.vert", "shader.frag");
   
   // Array of vertices
   float vertices[] = {
