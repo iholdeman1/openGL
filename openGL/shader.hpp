@@ -15,12 +15,14 @@
 #include <sstream>
 #include <iostream>
 
+// Local Includes
+#include "glm/glm.hpp"
+
 class Shader {
 
 public:
   // Ctor
-  Shader(const char *vertexPath, const char *fragmentPath)
-  {
+  Shader(const char *vertexPath, const char *fragmentPath) {
     // Retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
     std::string fragmentCode;
@@ -87,30 +89,65 @@ public:
     glDeleteProgram(id_);
   }
 
-  void use()
-  {
+  void use() {
     glUseProgram(id_);
   }
   
+  unsigned int get_id() const {
+    return id_;
+  }
+  
   // TODO: might be useful to make sure these are relevant
-  void set_bool(const std::string name, const bool value)
-  {
+  void set_bool(const std::string name, const bool value) {
     glUniform1i(glGetUniformLocation(id_, name.c_str()), static_cast<int>(value));
   }
   
-  void set_int(const std::string name, const int value)
-  {
+  void set_int(const std::string name, const int value) {
     glUniform1i(glGetUniformLocation(id_, name.c_str()), value);
   }
   
-  void set_float(const std::string name, const float value)
-  {
+  void set_float(const std::string name, const float value) {
     glUniform1f(glGetUniformLocation(id_, name.c_str()), value);
+  }
+  
+  void set_vec2(const std::string &name, const glm::vec2 &value) const {
+      glUniform2fv(glGetUniformLocation(id_, name.c_str()), 1, &value[0]);
+  }
+  
+  void set_vec2(const std::string &name, float x, float y) const {
+      glUniform2f(glGetUniformLocation(id_, name.c_str()), x, y);
+  }
+  
+  void set_vec3(const std::string &name, const glm::vec3 &value) const {
+      glUniform3fv(glGetUniformLocation(id_, name.c_str()), 1, &value[0]);
+  }
+  
+  void set_vec3(const std::string &name, float x, float y, float z) const {
+      glUniform3f(glGetUniformLocation(id_, name.c_str()), x, y, z);
+  }
+  
+  void set_vec4(const std::string &name, const glm::vec4 &value) const {
+      glUniform4fv(glGetUniformLocation(id_, name.c_str()), 1, &value[0]);
+  }
+  
+  void set_vec4(const std::string &name, float x, float y, float z, float w) const {
+      glUniform4f(glGetUniformLocation(id_, name.c_str()), x, y, z, w);
+  }
+  
+  void set_mat2(const std::string &name, const glm::mat2 &mat) const {
+      glUniformMatrix2fv(glGetUniformLocation(id_, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+  }
+
+  void set_mat3(const std::string &name, const glm::mat3 &mat) const {
+      glUniformMatrix3fv(glGetUniformLocation(id_, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+  }
+  
+  void set_mat4(const std::string &name, const glm::mat4 &mat) const {
+      glUniformMatrix4fv(glGetUniformLocation(id_, name.c_str()), 1, GL_FALSE, &mat[0][0]);
   }
 
 private:
-  void check_compile_errors(const unsigned int shader, const std::string type)
-  {
+  void check_compile_errors(const unsigned int shader, const std::string type) {
     int success;
     char infoLog[1024];
     
