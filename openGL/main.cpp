@@ -18,6 +18,9 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include "shader.hpp"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 // Globals
 const unsigned int WINDOW_WIDTH = 800;
@@ -177,10 +180,10 @@ int main(int argc, const char *argv[]) {
   stbi_image_free(data);
   
   shader.use(); // Don't forget to activate the shader before setting uniforms!
-  // glUniform1i(glGetUniformLocation(shader.id_, "texture_one"), 0); // set it manually
-  // Have to use the shader class since I made the `id_` private
-  shader.set_int("texture_one", 0); // or with shader class
-  shader.set_int("texture_two", 1); // or with shader class
+  glUniform1i(glGetUniformLocation(shader.get_id(), "texture_one"), 0); // set it manually
+  glUniform1i(glGetUniformLocation(shader.get_id(), "texture_two"), 1); // set it manually
+//  shader.set_int("texture_one", 0); // or with shader class
+//  shader.set_int("texture_two", 1); // or with shader class
   
 //  uncomment this call to draw in wireframe polygons.
 //  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -198,8 +201,15 @@ int main(int argc, const char *argv[]) {
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture_two);
     
+    // Transformations
+    glm::mat4 transform = glm::mat4(1.0f); // Make sure to initialize matrix to identity matrix first
+    transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+    transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+    
     // Be sure to activate the shader
     shader.use();
+    unsigned int transformLoc = glGetUniformLocation(shader.get_id(), "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
     
     glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 //    glDrawArrays(GL_TRIANGLES, 0, 3); // -- w/o EBO/only want triangle
