@@ -13,6 +13,8 @@
 		915E3EC424AAD34A003D043B /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 915E3EC124AACCCD003D043B /* shader.frag */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		91F6E40824B11600008919AB /* awesomeface.png in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E40724B11533008919AB /* awesomeface.png */; };
+		91F6E40924B11600008919AB /* container.jpg in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E40624B112AC008919AB /* container.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +54,9 @@
 		91F3E291239C67C4009563D3 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
 		91F3E292239C686D009563D3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		91F3E294239C6888009563D3 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		91F6E40124B1059B008919AB /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = "../../../../Downloads/stb-master/stb_image.h"; sourceTree = "<group>"; };
+		91F6E40624B112AC008919AB /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
+		91F6E40724B11533008919AB /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,7 @@
 		91F3E27A239C6795009563D3 = {
 			isa = PBXGroup;
 			children = (
+				91F6E40324B110F4008919AB /* Assets */,
 				91F3E285239C6795009563D3 /* openGL */,
 				91F3E284239C6795009563D3 /* Products */,
 				91F3E28D239C67A6009563D3 /* Frameworks */,
@@ -87,6 +93,7 @@
 		91F3E285239C6795009563D3 /* openGL */ = {
 			isa = PBXGroup;
 			children = (
+				91F6E40124B1059B008919AB /* stb_image.h */,
 				912EC60724A9408400D13CE7 /* openGL.entitlements */,
 				91F3E286239C6795009563D3 /* main.cpp */,
 				915E3EBF24AAC9E5003D043B /* shader.hpp */,
@@ -115,6 +122,16 @@
 			);
 			name = GLFW;
 			path = ../../../../../usr/local/include/GLFW;
+			sourceTree = "<group>";
+		};
+		91F6E40324B110F4008919AB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				91F6E40724B11533008919AB /* awesomeface.png */,
+				91F6E40624B112AC008919AB /* container.jpg */,
+			);
+			name = Assets;
+			path = openGL/Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F6E40824B11600008919AB /* awesomeface.png in Sources */,
+				91F6E40924B11600008919AB /* container.jpg in Sources */,
 				91F3E287239C6795009563D3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
