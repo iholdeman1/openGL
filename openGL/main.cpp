@@ -16,6 +16,7 @@
 
 // Local Includes
 #define STB_IMAGE_IMPLEMENTATION
+#include "camera.hpp"
 #include "stb_image.h"
 #include "shader.hpp"
 #include "glm/glm.hpp"
@@ -26,6 +27,24 @@
 const unsigned int WINDOW_WIDTH = 800;
 const unsigned int WINDOW_HEIGHT = 600;
 
+// Timing variables
+float delta_time = 0.0f;
+float last_frame = 0.0f;
+
+// Camera variables
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+float last_x = 800.0f / 2.0;
+float last_y = 600.0 / 2.0;
+bool first_mouse = true;
+
+// Lambda Graveyard
+void key_callback(GLFWwindow *window, const int key, const int scancode,
+                  const int action, const int mods);
+
+void mouse_callback(GLFWwindow *window, const double x_position, const double y_position);
+
+void scroll_callback(GLFWwindow *window, const double x_offset, const double y_offset);
+
 // Kill function
 void kill_glfw() {
   glfwTerminate();
@@ -35,25 +54,12 @@ void kill_glfw() {
 int main(int argc, const char *argv[]) {
   
   // Callback City
-  const auto error_callback = [](int error, const char *description)
-  {
+  const auto error_callback = [](int error, const char *description) {
     std::cerr << "Error: " << description << "\n";
   };
   
-  const auto frame_buffer_size_callback = [](GLFWwindow *window, const int width, const int height)
-  {
+  const auto frame_buffer_size_callback = [](GLFWwindow *window, const int width, const int height) {
     glViewport(0, 0, width, height);
-  };
-  
-  const auto key_callback = [](GLFWwindow *window,
-                               const int key,
-                               const int scancode,
-                               const int action,
-                               const int mods)
-  {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-      glfwSetWindowShouldClose(window, GLFW_TRUE);
-    }
   };
   
   // Initialize GLFW
@@ -81,6 +87,8 @@ int main(int argc, const char *argv[]) {
   // Set Callbacks
   glfwSetErrorCallback(error_callback);
   glfwSetKeyCallback(window, key_callback);
+  glfwSetCursorPosCallback(window, mouse_callback);
+  glfwSetScrollCallback(window, scroll_callback);
   
   int window_width, window_height;
   glfwGetFramebufferSize(window, &window_width, &window_height);
@@ -89,6 +97,9 @@ int main(int argc, const char *argv[]) {
 
   // Enable Z-buffer
   glEnable(GL_DEPTH_TEST);
+  
+  // Tell GLFW to capture our mouse
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
   
   // Setup shader class
   Shader shader("shader.vert", "shader.frag");
@@ -242,6 +253,12 @@ int main(int argc, const char *argv[]) {
   
   // Main loop
   while (!glfwWindowShouldClose(window)) {
+    
+    // Timing logic
+    const float current_frame = glfwGetTime();
+    delta_time = current_frame - last_frame;
+    last_frame = current_frame;
+    
     glfwPollEvents();
     
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -257,22 +274,15 @@ int main(int argc, const char *argv[]) {
     shader.use();
     
     // Transformations
-    glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 view = glm::mat4(1.0f);
     glm::mat4 projection = glm::mat4(1.0f);
-    
-    model = glm::rotate(model, static_cast<float>(glfwGetTime()), glm::vec3(0.5f, 1.0f, 0.0f));
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-    projection = glm::perspective(glm::radians(45.0f), static_cast<float>(WINDOW_WIDTH) /
+    projection = glm::perspective(glm::radians(camera.get_zoom()), static_cast<float>(WINDOW_WIDTH) /
                                   static_cast<float>(WINDOW_HEIGHT), 0.1f, 100.0f);
     
-    // Retrieve the matrix uniform locations
-    unsigned int model_location = glGetUniformLocation(shader.get_id(), "model");
-    // Pass them to the shaders (3 different ways)
-    glUniformMatrix4fv(model_location, 1, GL_FALSE, glm::value_ptr(model));
     // Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
     shader.set_mat4("projection", projection);
-    shader.set_mat4("view", view);
+    
+    // Camera/view transformation
+    shader.set_mat4("view", camera.get_view_matrix());
     
     glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
     
@@ -303,4 +313,46 @@ int main(int argc, const char *argv[]) {
   glfwDestroyWindow(window);
   kill_glfw();
   return 0;
+}
+
+// Implementation of dead callbacks
+void key_callback(GLFWwindow *window, const int key, const int scancode,
+                  const int action, const int mods) {
+  if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+    glfwSetWindowShouldClose(window, GLFW_TRUE);
+  }
+  else if (key == GLFW_KEY_W && action == GLFW_PRESS) {
+    camera.process_keyboard(FORWARD, delta_time);
+  }
+  else if (key == GLFW_KEY_A && action == GLFW_PRESS) {
+    camera.process_keyboard(LEFT, delta_time);
+  }
+  else if (key == GLFW_KEY_S && action == GLFW_PRESS) {
+    camera.process_keyboard(BACKWARD, delta_time);
+  }
+  else if (key == GLFW_KEY_D && action == GLFW_PRESS) {
+    camera.process_keyboard(RIGHT, delta_time);
+  }
+
+}
+
+void mouse_callback(GLFWwindow *window, const double x_position, const double y_position) {
+  if (first_mouse)
+  {
+    last_x = x_position;
+    last_y = y_position;
+    first_mouse = false;
+  }
+
+  float x_offset = x_position - last_x;
+  float y_offset = last_y - y_position;
+  
+  last_x = x_position;
+  last_y = y_position;
+
+  camera.process_mouse_movement(x_offset, y_offset);
+}
+
+void scroll_callback(GLFWwindow *window, const double x_offset, const double y_offset) {
+  camera.process_mouse_scroll(y_offset);
 }
