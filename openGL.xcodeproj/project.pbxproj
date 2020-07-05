@@ -47,6 +47,7 @@
 		915E3EBF24AAC9E5003D043B /* shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
 		915E3EC024AACCBD003D043B /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		915E3EC124AACCCD003D043B /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
+		917F624524B286D8003F0FD1 /* camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = camera.hpp; sourceTree = "<group>"; };
 		918E2DB624B13B010018AEEC /* vec4.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vec4.hpp; sourceTree = "<group>"; };
 		918E2DB724B13B010018AEEC /* integer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = integer.hpp; sourceTree = "<group>"; };
 		918E2DB824B13B010018AEEC /* vector_relational.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector_relational.hpp; sourceTree = "<group>"; };
@@ -907,6 +908,7 @@
 				915E3EBF24AAC9E5003D043B /* shader.hpp */,
 				915E3EC024AACCBD003D043B /* shader.vert */,
 				915E3EC124AACCCD003D043B /* shader.frag */,
+				917F624524B286D8003F0FD1 /* camera.hpp */,
 			);
 			path = openGL;
 			sourceTree = "<group>";
