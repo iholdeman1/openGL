@@ -72,6 +72,10 @@ public:
   float get_zoom() const {
     return zoom_;
   }
+  
+  glm::vec3 get_position() {
+    return position_;
+  }
 
   // Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
   void process_keyboard(Camera_Movement direction, const float delta_time) {
