@@ -210,10 +210,28 @@ int main(int argc, const char *argv[]) {
     
     // Be sure to activate the shader
     shader.use();
+    
+    // Color properties
+    glm::vec3 light_color;
+    light_color.x = sin(glfwGetTime() * 2.0f);
+    light_color.y = sin(glfwGetTime() * 0.7f);
+    light_color.z = sin(glfwGetTime() * 1.3f);
+    
+    glm::vec3 diffuse_color = light_color * glm::vec3(0.5f);
+    glm::vec3 ambient_color = diffuse_color * glm::vec3(0.2f);
+    
+    shader.set_vec3("light.ambient", ambient_color);
+    shader.set_vec3("light.diffuse", diffuse_color);
+    shader.set_vec3("light.specular", 1.0, 1.0, 1.0);
+    
     shader.set_vec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
     shader.set_vec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
     shader.set_vec3("lightPos", light_position);
     shader.set_vec3("viewPos", camera.get_position());
+    shader.set_vec3("material.ambient", 1.0f, 0.5f, 0.31f);
+    shader.set_vec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+    shader.set_vec3("material.specular", 0.5f, 0.5f, 0.5f);
+    shader.set_float("material.shininess", 32.0f);
     
     // Transformations
     glm::mat4 projection = glm::mat4(1.0f);
@@ -250,6 +268,7 @@ int main(int argc, const char *argv[]) {
   
   // Clean up
   glDeleteVertexArrays(1, &VAO);
+  glDeleteVertexArrays(1, &light_vao);
   glDeleteBuffers(1, &VBO);
   shader.~Shader();
   
