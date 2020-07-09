@@ -13,6 +13,8 @@
 		913F772924B3A75C00B8DD04 /* light_shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 913F772724B3A72C00B8DD04 /* light_shader.frag */; };
 		915E3EC324AAD34A003D043B /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 915E3EC024AACCBD003D043B /* shader.vert */; };
 		915E3EC424AAD34A003D043B /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 915E3EC124AACCCD003D043B /* shader.frag */; };
+		91C920B124B6DCF80018CA8E /* container2_specular.png in Sources */ = {isa = PBXBuildFile; fileRef = 91C920AF24B6DCF00018CA8E /* container2_specular.png */; };
+		91C920B224B6DCF80018CA8E /* container2.png in Sources */ = {isa = PBXBuildFile; fileRef = 91C920B024B6DCF00018CA8E /* container2.png */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91F6E40824B11600008919AB /* awesomeface.png in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E40724B11533008919AB /* awesomeface.png */; };
@@ -434,6 +436,8 @@
 		918E2F3424B13B020018AEEC /* rotate_normalized_axis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rotate_normalized_axis.hpp; sourceTree = "<group>"; };
 		918E2F3524B13B020018AEEC /* projection.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = projection.inl; sourceTree = "<group>"; };
 		918E2F3624B13B020018AEEC /* type_aligned.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type_aligned.hpp; sourceTree = "<group>"; };
+		91C920AF24B6DCF00018CA8E /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
+		91C920B024B6DCF00018CA8E /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
 		91F3E283239C6795009563D3 /* openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F3E286239C6795009563D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		91F3E28E239C67A6009563D3 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = ../../../../../usr/local/Cellar/glfw/3.3/include/GLFW/glfw3.h; sourceTree = "<group>"; };
@@ -945,6 +949,8 @@
 		91F6E40324B110F4008919AB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				91C920AF24B6DCF00018CA8E /* container2_specular.png */,
+				91C920B024B6DCF00018CA8E /* container2.png */,
 				91F6E40724B11533008919AB /* awesomeface.png */,
 				91F6E40624B112AC008919AB /* container.jpg */,
 			);
@@ -1010,6 +1016,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C920B124B6DCF80018CA8E /* container2_specular.png in Sources */,
+				91C920B224B6DCF80018CA8E /* container2.png in Sources */,
 				91F6E40824B11600008919AB /* awesomeface.png in Sources */,
 				91F6E40924B11600008919AB /* container.jpg in Sources */,
 				91F3E287239C6795009563D3 /* main.cpp in Sources */,
