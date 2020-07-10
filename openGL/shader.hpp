@@ -22,7 +22,6 @@
 class Shader {
 public:
   Shader();
-  ~Shader();
   
   void use();
   void compile(const char *vertexSource, const char *fragmentSource, const char *geometrySource);

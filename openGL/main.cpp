@@ -72,7 +72,7 @@ int main(int argc, const char *argv[]) {
   // Enable stuff
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  
+
   // Initialize game
   breakout.init();
   
@@ -96,11 +96,12 @@ int main(int argc, const char *argv[]) {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     breakout.render();
-    
+
     glfwSwapBuffers(window);
   }
   
   // Kill program
+  ResourceManager::clear();
   glfwDestroyWindow(window);
   kill_glfw();
   return 0;
