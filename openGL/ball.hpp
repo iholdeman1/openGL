@@ -29,6 +29,7 @@ public:
   void unstick();
   
   bool is_stuck() const { return stuck_; };
+  float get_radius() const { return radius_; };
 
 private:
   float radius_;

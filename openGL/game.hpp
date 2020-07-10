@@ -38,13 +38,16 @@ public:
   void set_key(const unsigned int key, const bool flag);
 
 private:
+  void calculate_collisions();
+  bool check_collision(const Ball& ball, const GameObject& rect);
+  
   GameState state_;
   bool keys_[1024];
   unsigned int width_;
   unsigned int height_;
   
   std::vector<GameLevel> levels_;
-  unsigned int level;
+  unsigned int level_;
   
   GameObject *player_;
   Ball *ball_;

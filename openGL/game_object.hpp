@@ -25,6 +25,7 @@ public:
   
   virtual void draw(SpriteRenderer &renderer);
   void set_is_solid(const bool flag);
+  void set_is_destroyed(const bool flag);
   void move_object(const float x, const float y);
 
   bool is_destroyed() const { return destroyed_; };

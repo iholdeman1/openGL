@@ -25,6 +25,8 @@ public:
   void draw(SpriteRenderer& renderer);
   bool is_complete();
   
+  std::vector<GameObject>& get_bricks() { return bricks_; };
+  
 private:
   void init(std::vector<std::vector<unsigned int>> tile_data,
             unsigned int level_width, unsigned int level_height);

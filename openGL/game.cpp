@@ -58,7 +58,7 @@ void Game::init() {
   levels_.push_back(three);
   levels_.push_back(four);
 
-  level = 0;
+  level_ = 0;
   
   // Set up the player
   glm::vec2 player_position = glm::vec2(width_ / 2.0f - PLAYER_SIZE.x / 2.0f, height_ - PLAYER_SIZE.y);
@@ -95,6 +95,7 @@ void Game::process_input(const float delta_time) {
 
 void Game::update(const float delta_time) {
   ball_->move(delta_time, width_);
+  calculate_collisions();
 }
 
 void Game::render() {
@@ -102,7 +103,7 @@ void Game::render() {
 		renderer_->draw_sprite(ResourceManager::get_texture("background"), glm::vec2(0.0f, 0.0f),
                            glm::vec2(width_, height_), 0.0f);
 
-		levels_[level].draw(*renderer_);
+		levels_[level_].draw(*renderer_);
     player_->draw(*renderer_);
     ball_->draw(*renderer_);
 	}
@@ -110,4 +111,42 @@ void Game::render() {
 
 void Game::set_key(const unsigned int key, const bool flag) {
   keys_[key] = flag;
+}
+
+void Game::calculate_collisions() {
+  for (GameObject& rect : levels_[level_].get_bricks()) {
+    if (!rect.is_destroyed() && check_collision(*ball_, rect) && !rect.is_solid()) {
+      rect.set_is_destroyed(true);
+    }
+  }
+}
+
+bool Game::check_collision(const Ball& ball, const GameObject& rect) {
+  // Get member vars for each object
+  const float ball_radius = ball.get_radius();
+  const glm::vec2 ball_position = ball.get_position();
+  const glm::vec2 rect_position = rect.get_position();
+  const glm::vec2 rect_size = rect.get_size();
+  
+  // Get ball's center
+  glm::vec2 center(ball_position + ball_radius);
+  
+  // Calculate AABB info (center, half-extents)
+  glm::vec2 aabb_half_extents(rect_size.x / 2.0f, rect_size.y / 2.0f);
+  glm::vec2 aabb_center(
+    rect_position.x + aabb_half_extents.x,
+    rect_position.y + aabb_half_extents.y
+  );
+  
+  // Get difference vector between both centers
+  glm::vec2 difference = center - aabb_center;
+  glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+  
+  // Add clamped value to AABB_center and we get the value of box closest to circle
+  glm::vec2 closest = aabb_center + clamped;
+  
+  // Retrieve vector between center circle and closest point AABB and check if length <= radius
+  difference = closest - center;
+  
+  return glm::length(difference) < ball_radius;
 }
