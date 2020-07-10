@@ -60,9 +60,13 @@ void Game::init() {
 
   level = 0;
   
-  // Set up player
+  // Set up the player
   glm::vec2 player_position = glm::vec2(width_ / 2.0f - PLAYER_SIZE.x / 2.0f, height_ - PLAYER_SIZE.y);
   player_ = new GameObject(player_position, PLAYER_SIZE, ResourceManager::get_texture("paddle"));
+  
+  // Set up the ball
+  glm::vec2 ball_position = player_position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
+  ball_ = new Ball(ball_position, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::get_texture("face"));
 }
 
 void Game::process_input(const float delta_time) {
@@ -73,15 +77,24 @@ void Game::process_input(const float delta_time) {
 
     if (keys_[GLFW_KEY_A] && current_player_position.x >= 0.0f) {
       player_->move_object(-velocity, 0.0f);
+      if (ball_->is_stuck()) {
+        ball_->move_object(-velocity, 0.0);
+      }
     }
     if (keys_[GLFW_KEY_D] && current_player_position.x <= width_ - current_player_size.x) {
       player_->move_object(velocity, 0.0f);
+      if (ball_->is_stuck()) {
+        ball_->move_object(velocity, 0.0);
+      }
+    }
+    if (keys_[GLFW_KEY_SPACE]) {
+      ball_->unstick();
     }
   }
 }
 
 void Game::update(const float delta_time) {
-  
+  ball_->move(delta_time, width_);
 }
 
 void Game::render() {
@@ -91,6 +104,7 @@ void Game::render() {
 
 		levels_[level].draw(*renderer_);
     player_->draw(*renderer_);
+    ball_->draw(*renderer_);
 	}
 }
 

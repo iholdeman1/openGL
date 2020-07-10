@@ -13,7 +13,9 @@
 #include <vector>
 
 // Local Includes
+#include "ball.hpp"
 #include "game_level.hpp"
+#include "game_object.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
 
@@ -45,11 +47,15 @@ private:
   unsigned int level;
   
   GameObject *player_;
+  Ball *ball_;
 
   SpriteRenderer *renderer_;
   
+  // Constants
   const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);
   const float PLAYER_VELOCITY = 500.0f;
+  const glm::vec2 INITIAL_BALL_VELOCITY = glm::vec2(100.0f, -350.0f);
+  const float BALL_RADIUS = 12.5f;
   
 };
 

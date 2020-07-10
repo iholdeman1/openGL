@@ -32,7 +32,7 @@ public:
   glm::vec2 get_position() const { return position_; };
   glm::vec2 get_size() const { return size_; };
 
-private:
+protected:
   glm::vec2 position_;
   glm::vec2 size_;
   glm::vec2 velocity_;

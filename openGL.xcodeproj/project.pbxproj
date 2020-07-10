@@ -27,6 +27,7 @@
 		91CB2E1224B8D52E00D58E9E /* two.lvl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91CB2E0E24B8D4F300D58E9E /* two.lvl */; };
 		91CB2E1824B8DB1000D58E9E /* background.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1724B8DB0B00D58E9E /* background.png */; };
 		91CB2E1A24B8DE8400D58E9E /* paddle.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1924B8DE7E00D58E9E /* paddle.png */; };
+		91CB2E1D24B8FB7700D58E9E /* ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1B24B8FB7700D58E9E /* ball.cpp */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -467,6 +468,8 @@
 		91CB2E0E24B8D4F300D58E9E /* two.lvl */ = {isa = PBXFileReference; lastKnownFileType = text; path = two.lvl; sourceTree = "<group>"; };
 		91CB2E1724B8DB0B00D58E9E /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		91CB2E1924B8DE7E00D58E9E /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
+		91CB2E1B24B8FB7700D58E9E /* ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ball.cpp; sourceTree = "<group>"; };
+		91CB2E1C24B8FB7700D58E9E /* ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ball.hpp; sourceTree = "<group>"; };
 		91F3E283239C6795009563D3 /* openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F3E286239C6795009563D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		91F3E28E239C67A6009563D3 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = ../../../../../usr/local/Cellar/glfw/3.3/include/GLFW/glfw3.h; sourceTree = "<group>"; };
@@ -980,6 +983,8 @@
 				917856CB24B8BDA100F8A754 /* game_object.hpp */,
 				917856CD24B8C02700F8A754 /* game_level.cpp */,
 				917856CE24B8C02700F8A754 /* game_level.hpp */,
+				91CB2E1B24B8FB7700D58E9E /* ball.cpp */,
+				91CB2E1C24B8FB7700D58E9E /* ball.hpp */,
 			);
 			path = openGL;
 			sourceTree = "<group>";
@@ -1078,6 +1083,7 @@
 			files = (
 				91CB2E1A24B8DE8400D58E9E /* paddle.png in Sources */,
 				91CB2E1824B8DB1000D58E9E /* background.png in Sources */,
+				91CB2E1D24B8FB7700D58E9E /* ball.cpp in Sources */,
 				917856DD24B8CF9200F8A754 /* block_solid.png in Sources */,
 				917856DE24B8CF9200F8A754 /* block.png in Sources */,
 				917856CC24B8BDA100F8A754 /* game_object.cpp in Sources */,
