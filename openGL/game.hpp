@@ -9,6 +9,10 @@
 #ifndef game_hpp
 #define game_hpp
 
+// Local Includes
+#include "resource_manager.hpp"
+#include "sprite_renderer.hpp"
+
 enum class GameState {
   ACTIVE,
   MENU,
@@ -32,6 +36,8 @@ private:
   bool keys_[1024];
   unsigned int width_;
   unsigned int height_;
+  
+  SpriteRenderer *renderer_;
   
 };
 

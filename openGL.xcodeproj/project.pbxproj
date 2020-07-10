@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		912EC60524A939A300D13CE7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E292239C686D009563D3 /* OpenGL.framework */; };
 		912EC60624A93F6700D13CE7 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; };
+		917856C824B8B1A000F8A754 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 917856C624B8B18800F8A754 /* shader.vert */; };
+		917856C924B8B1A000F8A754 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 917856C724B8B18800F8A754 /* shader.frag */; };
 		918B2DE924B7B1F30009B2AD /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DE724B7B1F30009B2AD /* shader.cpp */; };
 		918B2DEC24B7B2A70009B2AD /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DEA24B7B2A70009B2AD /* texture.cpp */; };
 		918B2DEF24B7B4890009B2AD /* resource_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DED24B7B4890009B2AD /* resource_manager.cpp */; };
+		918B2DF224B7CBBD0009B2AD /* sprite_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DF024B7CBBD0009B2AD /* sprite_renderer.cpp */; };
+		918B2DFD24B7F19F0009B2AD /* awesomeface.png in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DF324B7CDF60009B2AD /* awesomeface.png */; };
 		919E6E2024B7A93A00AE9ED5 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919E6E1E24B7A93A00AE9ED5 /* game.cpp */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -24,6 +28,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				917856C824B8B1A000F8A754 /* shader.vert in CopyFiles */,
+				917856C924B8B1A000F8A754 /* shader.frag in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,12 +48,17 @@
 
 /* Begin PBXFileReference section */
 		912EC60724A9408400D13CE7 /* openGL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = openGL.entitlements; sourceTree = "<group>"; };
+		917856C624B8B18800F8A754 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		917856C724B8B18800F8A754 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		918B2DE724B7B1F30009B2AD /* shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
 		918B2DE824B7B1F30009B2AD /* shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
 		918B2DEA24B7B2A70009B2AD /* texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		918B2DEB24B7B2A70009B2AD /* texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
 		918B2DED24B7B4890009B2AD /* resource_manager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = resource_manager.cpp; sourceTree = "<group>"; };
 		918B2DEE24B7B4890009B2AD /* resource_manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = resource_manager.hpp; sourceTree = "<group>"; };
+		918B2DF024B7CBBD0009B2AD /* sprite_renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sprite_renderer.cpp; sourceTree = "<group>"; };
+		918B2DF124B7CBBD0009B2AD /* sprite_renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sprite_renderer.hpp; sourceTree = "<group>"; };
+		918B2DF324B7CDF60009B2AD /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = ../../../../../Downloads/awesomeface.png; sourceTree = "<group>"; };
 		918E2DB624B13B010018AEEC /* vec4.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vec4.hpp; sourceTree = "<group>"; };
 		918E2DB724B13B010018AEEC /* integer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = integer.hpp; sourceTree = "<group>"; };
 		918E2DB824B13B010018AEEC /* vector_relational.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector_relational.hpp; sourceTree = "<group>"; };
@@ -453,6 +464,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		917856C524B8B18800F8A754 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				917856C624B8B18800F8A754 /* shader.vert */,
+				917856C724B8B18800F8A754 /* shader.frag */,
+			);
+			name = Shaders;
+			path = openGL/Shaders;
+			sourceTree = "<group>";
+		};
 		918E2DB524B13B010018AEEC /* glm */ = {
 			isa = PBXGroup;
 			children = (
@@ -883,6 +904,7 @@
 		91F3E27A239C6795009563D3 = {
 			isa = PBXGroup;
 			children = (
+				917856C524B8B18800F8A754 /* Shaders */,
 				91F6E40324B110F4008919AB /* Assets */,
 				91F3E285239C6795009563D3 /* openGL */,
 				91F3E284239C6795009563D3 /* Products */,
@@ -913,6 +935,8 @@
 				918B2DEB24B7B2A70009B2AD /* texture.hpp */,
 				918B2DED24B7B4890009B2AD /* resource_manager.cpp */,
 				918B2DEE24B7B4890009B2AD /* resource_manager.hpp */,
+				918B2DF024B7CBBD0009B2AD /* sprite_renderer.cpp */,
+				918B2DF124B7CBBD0009B2AD /* sprite_renderer.hpp */,
 			);
 			path = openGL;
 			sourceTree = "<group>";
@@ -941,6 +965,7 @@
 		91F6E40324B110F4008919AB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				918B2DF324B7CDF60009B2AD /* awesomeface.png */,
 			);
 			name = Assets;
 			path = openGL/Assets;
@@ -1004,7 +1029,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918B2DFD24B7F19F0009B2AD /* awesomeface.png in Sources */,
 				918B2DE924B7B1F30009B2AD /* shader.cpp in Sources */,
+				918B2DF224B7CBBD0009B2AD /* sprite_renderer.cpp in Sources */,
 				918B2DEF24B7B4890009B2AD /* resource_manager.cpp in Sources */,
 				918B2DEC24B7B2A70009B2AD /* texture.cpp in Sources */,
 				91F3E287239C6795009563D3 /* main.cpp in Sources */,

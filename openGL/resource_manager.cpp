@@ -21,19 +21,19 @@
 std::map<std::string, Shader> ResourceManager::shaders;
 std::map<std::string, Texture2D> ResourceManager::textures;
 
-Shader ResourceManager::load_shader(const char *vertex_shader_file, const char *fragment_shader_file, 
-																		const char *geometry_shader_file, std::string name) {
+void ResourceManager::load_shader(const char *vertex_shader_file,
+                                    const char *fragment_shader_file,
+																		const char *geometry_shader_file,
+                                    std::string name) {
   shaders[name] = load_shader_from_file(vertex_shader_file, fragment_shader_file, geometry_shader_file);
-  return shaders[name];
 }
 
 Shader ResourceManager::get_shader(std::string name) {
   return shaders[name];
 }
 
-Texture2D ResourceManager::load_texture(const char *file, bool alpha, std::string name) {
+void ResourceManager::load_texture(const char *file, bool alpha, std::string name) {
   textures[name] = load_texture_from_file(file, alpha);
-  return textures[name];
 }
 
 Texture2D ResourceManager::get_texture(std::string name) {
@@ -59,6 +59,7 @@ Shader ResourceManager::load_shader_from_file(const char *vertex_shader_file,
   std::string vertex_code;
   std::string fragment_code;
   std::string geometry_code;
+
   try {
     // Open files
     std::ifstream vertexShaderFile(vertex_shader_file);
@@ -89,7 +90,7 @@ Shader ResourceManager::load_shader_from_file(const char *vertex_shader_file,
   catch (std::exception e) {
     std::cout << "ERROR::SHADER: Failed to read shader files\n";
   }
-
+  
   // 2. Now create shader object from source code
   Shader shader;
   shader.compile(vertex_code.c_str(), fragment_code.c_str(), geometry_shader_file != nullptr ? geometry_code.c_str() : nullptr);
@@ -106,6 +107,13 @@ Texture2D ResourceManager::load_texture_from_file(const char *file, bool alpha) 
   // Load image
   int width, height, nrChannels;
   unsigned char *data = stbi_load(file, &width, &height, &nrChannels, 0);
+  
+  if (data) {
+    std::cerr << "Loaded texture data: " << file << "\n";
+  }
+  else {
+    std::cerr << "Failed to load texture data: " << file << "\n";
+  }
   
   // Now generate texture
   texture.generate(width, height, data);
