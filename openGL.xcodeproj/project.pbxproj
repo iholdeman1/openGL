@@ -13,9 +13,9 @@
 		918B2DEC24B7B2A70009B2AD /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DEA24B7B2A70009B2AD /* texture.cpp */; };
 		918B2DEF24B7B4890009B2AD /* resource_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DED24B7B4890009B2AD /* resource_manager.cpp */; };
 		918B2DF224B7CBBD0009B2AD /* sprite_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DF024B7CBBD0009B2AD /* sprite_renderer.cpp */; };
-		918B2DF424B7CDFC0009B2AD /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 918B2DF324B7CDF60009B2AD /* awesomeface.png */; };
-		918B2DF824B7D1650009B2AD /* shader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DF624B7CE740009B2AD /* shader.vert */; };
-		918B2DF924B7D1650009B2AD /* shader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DF724B7CE7E0009B2AD /* shader.frag */; };
+		918B2DFA24B7F1900009B2AD /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 918B2DF624B7CE740009B2AD /* shader.vert */; };
+		918B2DFB24B7F1900009B2AD /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 918B2DF724B7CE7E0009B2AD /* shader.frag */; };
+		918B2DFD24B7F19F0009B2AD /* awesomeface.png in Sources */ = {isa = PBXBuildFile; fileRef = 918B2DF324B7CDF60009B2AD /* awesomeface.png */; };
 		919E6E2024B7A93A00AE9ED5 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919E6E1E24B7A93A00AE9ED5 /* game.cpp */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -28,7 +28,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				918B2DF424B7CDFC0009B2AD /* awesomeface.png in CopyFiles */,
+				918B2DFA24B7F1900009B2AD /* shader.vert in CopyFiles */,
+				918B2DFB24B7F1900009B2AD /* shader.frag in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,8 +1028,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				918B2DF824B7D1650009B2AD /* shader.vert in Sources */,
-				918B2DF924B7D1650009B2AD /* shader.frag in Sources */,
+				918B2DFD24B7F19F0009B2AD /* awesomeface.png in Sources */,
 				918B2DE924B7B1F30009B2AD /* shader.cpp in Sources */,
 				918B2DF224B7CBBD0009B2AD /* sprite_renderer.cpp in Sources */,
 				918B2DEF24B7B4890009B2AD /* resource_manager.cpp in Sources */,

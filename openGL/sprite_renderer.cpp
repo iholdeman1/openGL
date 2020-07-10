@@ -62,17 +62,16 @@ void SpriteRenderer::init_render_data() {
     1.0f, 1.0f, 1.0f, 1.0f,
     1.0f, 0.0f, 1.0f, 0.0f
   };
-  std::cout << glGetError() << std::endl;
+  
   glGenVertexArrays(1, &quad_vao_);
   glGenBuffers(1, &VBO);
-std::cout << glGetError() << std::endl;
+
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-std::cout << glGetError() << std::endl;
+
   glBindVertexArray(quad_vao_);
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
-  std::cout << glGetError() << std::endl;
 }
