@@ -9,7 +9,11 @@
 #ifndef game_hpp
 #define game_hpp
 
+// System Includes
+#include <vector>
+
 // Local Includes
+#include "game_level.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
 
@@ -37,7 +41,15 @@ private:
   unsigned int width_;
   unsigned int height_;
   
+  std::vector<GameLevel> levels_;
+  unsigned int level;
+  
+  GameObject *player_;
+
   SpriteRenderer *renderer_;
+  
+  const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);
+  const float PLAYER_VELOCITY = 500.0f;
   
 };
 
