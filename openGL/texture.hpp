@@ -22,6 +22,7 @@ public:
 
   void set_alpha_format();
 
+  unsigned int get_id() const { return id_; };
   unsigned int& get_id_ref() { return id_; };
   
 private:

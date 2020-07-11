@@ -50,6 +50,7 @@ int main(int argc, const char *argv[]) {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_RESIZABLE, false);
   
   GLFWwindow *window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Breakout", nullptr, nullptr);
   
@@ -63,11 +64,11 @@ int main(int argc, const char *argv[]) {
   
   // Set Callbacks
   glfwSetKeyCallback(window, key_callback);
-  
-  int window_width, window_height;
-  glfwGetFramebufferSize(window, &window_width, &window_height);
-  glViewport(0, 0, window_width, window_height);
   glfwSetFramebufferSizeCallback(window, frame_buffer_size_callback);
+
+  int width, height;
+  glfwGetFramebufferSize(window, &width, &height);
+  glViewport(0, 0, width, height);
 
   // Enable stuff
   glEnable(GL_BLEND);
@@ -125,5 +126,7 @@ void key_callback(GLFWwindow *window, const int key, const int scancode,
 }
 
 void frame_buffer_size_callback(GLFWwindow *window, const int width, const int height) {
+  // Make sure the viewport matches the new window dimensions; note that width and
+  // height will be significantly larger than specified on retina displays.
   glViewport(0, 0, width, height);
 }

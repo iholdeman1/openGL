@@ -28,6 +28,9 @@
 		91CB2E1824B8DB1000D58E9E /* background.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1724B8DB0B00D58E9E /* background.png */; };
 		91CB2E1A24B8DE8400D58E9E /* paddle.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1924B8DE7E00D58E9E /* paddle.png */; };
 		91CB2E1D24B8FB7700D58E9E /* ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1B24B8FB7700D58E9E /* ball.cpp */; };
+		91CB2E2024B9408800D58E9E /* post_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1E24B9408800D58E9E /* post_processor.cpp */; };
+		91CB2E2324B947E700D58E9E /* post_processing.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91CB2E2124B9479F00D58E9E /* post_processing.vert */; };
+		91CB2E2424B947E700D58E9E /* post_processing.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91CB2E2224B947A800D58E9E /* post_processing.frag */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -39,6 +42,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				91CB2E2324B947E700D58E9E /* post_processing.vert in CopyFiles */,
+				91CB2E2424B947E700D58E9E /* post_processing.frag in CopyFiles */,
 				91CB2E0F24B8D52E00D58E9E /* one.lvl in CopyFiles */,
 				91CB2E1024B8D52E00D58E9E /* three.lvl in CopyFiles */,
 				91CB2E1124B8D52E00D58E9E /* four.lvl in CopyFiles */,
@@ -470,6 +475,10 @@
 		91CB2E1924B8DE7E00D58E9E /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 		91CB2E1B24B8FB7700D58E9E /* ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ball.cpp; sourceTree = "<group>"; };
 		91CB2E1C24B8FB7700D58E9E /* ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ball.hpp; sourceTree = "<group>"; };
+		91CB2E1E24B9408800D58E9E /* post_processor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = post_processor.cpp; sourceTree = "<group>"; };
+		91CB2E1F24B9408800D58E9E /* post_processor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = post_processor.hpp; sourceTree = "<group>"; };
+		91CB2E2124B9479F00D58E9E /* post_processing.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = post_processing.vert; sourceTree = "<group>"; };
+		91CB2E2224B947A800D58E9E /* post_processing.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = post_processing.frag; sourceTree = "<group>"; };
 		91F3E283239C6795009563D3 /* openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F3E286239C6795009563D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		91F3E28E239C67A6009563D3 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = ../../../../../usr/local/Cellar/glfw/3.3/include/GLFW/glfw3.h; sourceTree = "<group>"; };
@@ -498,6 +507,8 @@
 			children = (
 				917856C624B8B18800F8A754 /* shader.vert */,
 				917856C724B8B18800F8A754 /* shader.frag */,
+				91CB2E2124B9479F00D58E9E /* post_processing.vert */,
+				91CB2E2224B947A800D58E9E /* post_processing.frag */,
 			);
 			name = Shaders;
 			path = openGL/Shaders;
@@ -985,6 +996,8 @@
 				917856CE24B8C02700F8A754 /* game_level.hpp */,
 				91CB2E1B24B8FB7700D58E9E /* ball.cpp */,
 				91CB2E1C24B8FB7700D58E9E /* ball.hpp */,
+				91CB2E1E24B9408800D58E9E /* post_processor.cpp */,
+				91CB2E1F24B9408800D58E9E /* post_processor.hpp */,
 			);
 			path = openGL;
 			sourceTree = "<group>";
@@ -1095,6 +1108,7 @@
 				918B2DEC24B7B2A70009B2AD /* texture.cpp in Sources */,
 				91F3E287239C6795009563D3 /* main.cpp in Sources */,
 				919E6E2024B7A93A00AE9ED5 /* game.cpp in Sources */,
+				91CB2E2024B9408800D58E9E /* post_processor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

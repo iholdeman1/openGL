@@ -65,6 +65,13 @@ void Shader::set_integer(const char *name, const int value) {
   glUniform1i(glGetUniformLocation(id_, name), value);
 };
 
+void Shader::set_integer(const char *name, const int value, const bool use_shader) {
+  if (use_shader) {
+    use();
+  }
+  glUniform1i(glGetUniformLocation(id_, name), value);
+};
+
 void Shader::set_float(const char *name, const float value) {
   glUniform1f(glGetUniformLocation(id_, name), value);
 };
