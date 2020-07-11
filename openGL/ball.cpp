@@ -43,6 +43,21 @@ glm::vec2 Ball::move(const float delta_time, const unsigned int window_width) {
   return position_;
 }
 
+void Ball::reverse_velocity(const bool reverse_x, const bool reverse_y) {
+  if (reverse_x) {
+    velocity_.x = -velocity_.x;
+  }
+  
+  if (reverse_y) {
+    velocity_.y = -velocity_.y;
+  }
+}
+
+void Ball::set_velocity(const float x, const float y) {
+  velocity_.x = x;
+  velocity_.y = y;
+}
+
 void Ball::reset(const glm::vec2 position, const glm::vec2 velocity) {
   position_ = position;
   velocity_ = velocity;

@@ -36,3 +36,12 @@ void GameObject::move_object(const float x, const float y) {
   position_.x += x;
   position_.y += y;
 }
+
+void GameObject::set_position(const float x, const float y) {
+  position_.x = x;
+  position_.y = y;
+}
+
+void GameObject::set_size(const glm::vec2 size) {
+  size_ = size;
+}

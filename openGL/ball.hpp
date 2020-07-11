@@ -25,6 +25,8 @@ public:
   Ball(glm::vec2 pos, float radius, glm::vec2 velocity, Texture2D sprite);
   
   glm::vec2 move(const float delta_time, const unsigned int window_width);
+  void reverse_velocity(const bool x, const bool y);
+  void set_velocity(const float x, const float y);
   void reset(const glm::vec2 position, const glm::vec2 velocity);
   void unstick();
   

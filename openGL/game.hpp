@@ -25,6 +25,15 @@ enum class GameState {
   WIN
 };
 
+enum class Direction {
+  UP,
+  DOWN,
+  LEFT,
+  RIGHT
+};
+
+typedef std::tuple<bool, Direction, glm::vec2> Collision;
+
 class Game {
 public:
   Game(const unsigned int width, const unsigned int height);
@@ -39,7 +48,10 @@ public:
 
 private:
   void calculate_collisions();
-  bool check_collision(const Ball& ball, const GameObject& rect);
+  Collision check_collision(const Ball& ball, const GameObject& rect);
+  Direction determine_vector_direction(glm::vec2 vector);
+  void reset_level();
+  void reset_player();
   
   GameState state_;
   bool keys_[1024];
