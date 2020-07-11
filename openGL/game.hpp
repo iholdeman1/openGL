@@ -13,7 +13,9 @@
 #include <vector>
 
 // Local Includes
+#include "ball.hpp"
 #include "game_level.hpp"
+#include "game_object.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
 
@@ -22,6 +24,15 @@ enum class GameState {
   MENU,
   WIN
 };
+
+enum class Direction {
+  UP,
+  DOWN,
+  LEFT,
+  RIGHT
+};
+
+typedef std::tuple<bool, Direction, glm::vec2> Collision;
 
 class Game {
 public:
@@ -36,20 +47,30 @@ public:
   void set_key(const unsigned int key, const bool flag);
 
 private:
+  void calculate_collisions();
+  Collision check_collision(const Ball& ball, const GameObject& rect);
+  Direction determine_vector_direction(glm::vec2 vector);
+  void reset_level();
+  void reset_player();
+  
   GameState state_;
   bool keys_[1024];
   unsigned int width_;
   unsigned int height_;
   
   std::vector<GameLevel> levels_;
-  unsigned int level;
+  unsigned int level_;
   
   GameObject *player_;
+  Ball *ball_;
 
   SpriteRenderer *renderer_;
   
+  // Constants
   const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);
   const float PLAYER_VELOCITY = 500.0f;
+  const glm::vec2 INITIAL_BALL_VELOCITY = glm::vec2(100.0f, -350.0f);
+  const float BALL_RADIUS = 12.5f;
   
 };
 

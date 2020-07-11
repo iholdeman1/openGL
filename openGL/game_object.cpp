@@ -28,7 +28,20 @@ void GameObject::set_is_solid(const bool flag) {
 	is_solid_ = flag;
 }
 
+void GameObject::set_is_destroyed(const bool flag) {
+  destroyed_ = flag;
+}
+
 void GameObject::move_object(const float x, const float y) {
   position_.x += x;
   position_.y += y;
+}
+
+void GameObject::set_position(const float x, const float y) {
+  position_.x = x;
+  position_.y = y;
+}
+
+void GameObject::set_size(const glm::vec2 size) {
+  size_ = size;
 }

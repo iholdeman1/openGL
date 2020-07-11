@@ -25,14 +25,18 @@ public:
   
   virtual void draw(SpriteRenderer &renderer);
   void set_is_solid(const bool flag);
+  void set_is_destroyed(const bool flag);
   void move_object(const float x, const float y);
+  void set_position(const float x, const float y);
+  void set_size(const glm::vec2 size);
 
   bool is_destroyed() const { return destroyed_; };
   bool is_solid() const { return is_solid_; };
   glm::vec2 get_position() const { return position_; };
   glm::vec2 get_size() const { return size_; };
+  glm::vec2 get_velocity() const { return velocity_; };
 
-private:
+protected:
   glm::vec2 position_;
   glm::vec2 size_;
   glm::vec2 velocity_;
