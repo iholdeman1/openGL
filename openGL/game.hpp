@@ -17,6 +17,7 @@
 #include "game_level.hpp"
 #include "game_object.hpp"
 #include "post_processor.hpp"
+#include "powerup.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
 
@@ -49,10 +50,16 @@ public:
 
 private:
   void calculate_collisions();
+  bool check_collision(const GameObject& one, const GameObject& two);
   Collision check_collision(const Ball& ball, const GameObject& rect);
   Direction determine_vector_direction(glm::vec2 vector);
   void reset_level();
   void reset_player();
+  bool should_spawn_powerup(const unsigned int chance);
+  void spawn_powerups(GameObject& rect);
+  void update_powerups(const float delta_time);
+  void activate_powerup(PowerUp& powerup);
+  bool is_other_powerup_active(std::string type);
   
   GameState state_;
   bool keys_[1024];
@@ -62,6 +69,8 @@ private:
   
   std::vector<GameLevel> levels_;
   unsigned int level_;
+  
+  std::vector<PowerUp> powerups_;
   
   GameObject *player_;
   Ball *ball_;

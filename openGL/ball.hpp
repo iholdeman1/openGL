@@ -28,14 +28,20 @@ public:
   void reverse_velocity(const bool x, const bool y);
   void set_velocity(const float x, const float y);
   void reset(const glm::vec2 position, const glm::vec2 velocity);
-  void unstick();
+  void set_stuck(const bool flag);
+  void set_sticky(const bool flag);
+  void set_pass_through(const bool flag);
   
   bool is_stuck() const { return stuck_; };
   float get_radius() const { return radius_; };
+  bool is_sticky() const { return sticky_; };
+  bool can_pass_through() const { return pass_through_; };
 
 private:
   float radius_;
   bool stuck_;
+  bool sticky_;
+  bool pass_through_;
 };
 
 #endif /* ball_hpp */

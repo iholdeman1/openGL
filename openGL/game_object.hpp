@@ -29,6 +29,7 @@ public:
   void move_object(const float x, const float y);
   void set_position(const float x, const float y);
   void set_size(const glm::vec2 size);
+  void set_color(const glm::vec3 color);
 
   bool is_destroyed() const { return destroyed_; };
   bool is_solid() const { return is_solid_; };
