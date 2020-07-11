@@ -47,7 +47,6 @@ void SpriteRenderer::draw_sprite(const Texture2D& texture, glm::vec2 position,
   glDrawArrays(GL_TRIANGLES, 0, 6);
 
   glBindVertexArray(0);
-
 }
 
 void SpriteRenderer::init_render_data() {

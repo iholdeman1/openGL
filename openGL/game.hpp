@@ -16,6 +16,7 @@
 #include "ball.hpp"
 #include "game_level.hpp"
 #include "game_object.hpp"
+#include "post_processor.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
 
@@ -57,13 +58,14 @@ private:
   bool keys_[1024];
   unsigned int width_;
   unsigned int height_;
+  float shake_time_ = 0.0f;
   
   std::vector<GameLevel> levels_;
   unsigned int level_;
   
   GameObject *player_;
   Ball *ball_;
-
+  PostProcessor *effects_;
   SpriteRenderer *renderer_;
   
   // Constants

@@ -19,12 +19,14 @@ Game::~Game() {
   delete renderer_;
   delete player_;
   delete ball_;
+  delete effects_;
 }
 
 void Game::init() {
   
   // Set up the shader
   ResourceManager::load_shader("shader.vert", "shader.frag", nullptr, "sprite");
+  ResourceManager::load_shader("post_processing.vert", "post_processing.frag", nullptr, "postprocessing");
   
   glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(width_),
                                     static_cast<float>(height_), 0.0f, -1.0f, 1.0f);
@@ -33,8 +35,9 @@ void Game::init() {
   ResourceManager::get_shader("sprite").set_integer("image", 0);
   ResourceManager::get_shader("sprite").set_matrix4("projection", projection);
   
-  // Create the renderer
+  // Create the renderers
   renderer_ = new SpriteRenderer(ResourceManager::get_shader("sprite"));
+  effects_ = new PostProcessor(ResourceManager::get_shader("postprocessing"), width_, height_);
   
   // Load textures
   ResourceManager::load_texture("background.png", false, "background");
@@ -95,9 +98,21 @@ void Game::process_input(const float delta_time) {
 }
 
 void Game::update(const float delta_time) {
+  // Move ball
   ball_->move(delta_time, width_);
+  
+  // Collisions
   calculate_collisions();
   
+  // Reduce shake time
+  if (shake_time_ > 0.0f) {
+    shake_time_ -= delta_time;
+    if (shake_time_ <= 0.0f) {
+      effects_->set_shake(false);
+    }
+  }
+  
+  // Check loss condition
   if (ball_->get_position().y >= height_) {
     reset_level();
     reset_player();
@@ -106,12 +121,21 @@ void Game::update(const float delta_time) {
 
 void Game::render() {
 	if (state_ == GameState::ACTIVE) {
-		renderer_->draw_sprite(ResourceManager::get_texture("background"), glm::vec2(0.0f, 0.0f),
+    // Begin rendering to postprocessing framebuffer
+    effects_->begin_render();
+    
+    renderer_->draw_sprite(ResourceManager::get_texture("background"), glm::vec2(0.0f, 0.0f),
                            glm::vec2(width_, height_), 0.0f);
 
-		levels_[level_].draw(*renderer_);
+    levels_[level_].draw(*renderer_);
     player_->draw(*renderer_);
     ball_->draw(*renderer_);
+    
+    // End rendering to postprocessing framebuffer
+    effects_->end_render();
+    
+    // Render postprocessing quad
+    effects_->render(glfwGetTime());
 	}
 }
 
@@ -126,6 +150,10 @@ void Game::calculate_collisions() {
       if (std::get<0>(collision)) {
         if (!rect.is_solid()) {
           rect.set_is_destroyed(true);
+        }
+        else {
+          shake_time_ = 0.05f;
+          effects_->set_shake(true);
         }
           
         // Collision resolution

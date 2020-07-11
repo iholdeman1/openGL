@@ -28,6 +28,7 @@ public:
   
   void set_float(const char *name, const float value);
   void set_integer(const char *name, const int value);
+  void set_integer(const char *name, const int value, const bool use_shader);
   void set_vector2f(const char *name, const float x, const float y);
   void set_vector2f(const char *name, const glm::vec2 &value);
   void set_vector3f(const char *name, const float x, const float y, const float z);
