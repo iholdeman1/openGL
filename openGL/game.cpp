@@ -8,6 +8,7 @@
 
 #include "game.hpp"
 
+// System Includes
 #include <iostream>
 
 Game::Game(const unsigned int width, const unsigned int height)
@@ -20,6 +21,7 @@ Game::~Game() {
   delete player_;
   delete ball_;
   delete effects_;
+  sound_engine_->drop();
 }
 
 void Game::init() {
@@ -77,6 +79,10 @@ void Game::init() {
   // Set up the ball
   glm::vec2 ball_position = player_position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
   ball_ = new Ball(ball_position, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::get_texture("face"));
+  
+  // Set up the sound engine
+  sound_engine_ = irrklang::createIrrKlangDevice();
+  sound_engine_->play2D("breakout.mp3", true);
 }
 
 void Game::process_input(const float delta_time) {
@@ -168,10 +174,12 @@ void Game::calculate_collisions() {
         if (!rect.is_solid()) {
           rect.set_is_destroyed(true);
           spawn_powerups(rect);
+          sound_engine_->play2D("bleep.mp3", false);
         }
         else {
           shake_time_ = 0.05f;
           effects_->set_shake(true);
+          sound_engine_->play2D("solid.wav", false);
         }
           
         // Collision resolution
@@ -218,6 +226,7 @@ void Game::calculate_collisions() {
         activate_powerup(powerup);
         powerup.set_is_destroyed(true);
         powerup.set_activated(true);
+        sound_engine_->play2D("powerup.wav", false);
       }
   	}
   }
@@ -239,6 +248,8 @@ void Game::calculate_collisions() {
 
     // If Sticky powerup is activated, also stick ball to paddle once new velocity vectors were calculated
     ball_->set_stuck(ball_->is_sticky());
+    
+    sound_engine_->play2D("bleep.wav", false);
   }
 }
 

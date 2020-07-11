@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		912EC60524A939A300D13CE7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E292239C686D009563D3 /* OpenGL.framework */; };
 		912EC60624A93F6700D13CE7 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; };
+		91536CEF24BA27BC0072F03B /* bleep.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE524BA27110072F03B /* bleep.mp3 */; };
+		91536CF024BA27BC0072F03B /* bleep.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE624BA27110072F03B /* bleep.wav */; };
+		91536CF124BA27BC0072F03B /* breakout.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE724BA27110072F03B /* breakout.mp3 */; };
+		91536CF224BA27BC0072F03B /* powerup.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE924BA27110072F03B /* powerup.wav */; };
+		91536CF324BA27BC0072F03B /* solid.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE824BA27110072F03B /* solid.wav */; };
+		91536D0324BA29E20072F03B /* libirrklang.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91E0F3C424BA229F00853366 /* libirrklang.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		917856C824B8B1A000F8A754 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 917856C624B8B18800F8A754 /* shader.vert */; };
 		917856C924B8B1A000F8A754 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 917856C724B8B18800F8A754 /* shader.frag */; };
 		917856CC24B8BDA100F8A754 /* game_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 917856CA24B8BDA100F8A754 /* game_object.cpp */; };
@@ -38,6 +44,7 @@
 		91CB2E3124B96FD900D58E9E /* powerup_passthrough.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2C24B96FD100D58E9E /* powerup_passthrough.png */; };
 		91CB2E3224B96FD900D58E9E /* powerup_speed.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2D24B96FD100D58E9E /* powerup_speed.png */; };
 		91CB2E3324B96FD900D58E9E /* powerup_sticky.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2824B96FD000D58E9E /* powerup_sticky.png */; };
+		91E0F3C524BA229F00853366 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E0F3C424BA229F00853366 /* libirrklang.dylib */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -49,6 +56,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				91536CEF24BA27BC0072F03B /* bleep.mp3 in CopyFiles */,
+				91536CF024BA27BC0072F03B /* bleep.wav in CopyFiles */,
+				91536CF124BA27BC0072F03B /* breakout.mp3 in CopyFiles */,
+				91536CF224BA27BC0072F03B /* powerup.wav in CopyFiles */,
+				91536CF324BA27BC0072F03B /* solid.wav in CopyFiles */,
 				91CB2E2324B947E700D58E9E /* post_processing.vert in CopyFiles */,
 				91CB2E2424B947E700D58E9E /* post_processing.frag in CopyFiles */,
 				91CB2E0F24B8D52E00D58E9E /* one.lvl in CopyFiles */,
@@ -66,6 +78,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				91536D0324BA29E20072F03B /* libirrklang.dylib in Embed Libraries */,
 				91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
@@ -75,6 +88,11 @@
 
 /* Begin PBXFileReference section */
 		912EC60724A9408400D13CE7 /* openGL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = openGL.entitlements; sourceTree = "<group>"; };
+		91536CE524BA27110072F03B /* bleep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bleep.mp3; path = openGL/Sounds/bleep.mp3; sourceTree = SOURCE_ROOT; };
+		91536CE624BA27110072F03B /* bleep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bleep.wav; path = openGL/Sounds/bleep.wav; sourceTree = SOURCE_ROOT; };
+		91536CE724BA27110072F03B /* breakout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = breakout.mp3; path = openGL/Sounds/breakout.mp3; sourceTree = SOURCE_ROOT; };
+		91536CE824BA27110072F03B /* solid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = solid.wav; path = openGL/Sounds/solid.wav; sourceTree = SOURCE_ROOT; };
+		91536CE924BA27110072F03B /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = powerup.wav; path = openGL/Sounds/powerup.wav; sourceTree = SOURCE_ROOT; };
 		917856C624B8B18800F8A754 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		917856C724B8B18800F8A754 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		917856CA24B8BDA100F8A754 /* game_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cpp; sourceTree = "<group>"; };
@@ -494,6 +512,7 @@
 		91CB2E2B24B96FD000D58E9E /* powerup_chaos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_chaos.png; sourceTree = "<group>"; };
 		91CB2E2C24B96FD100D58E9E /* powerup_passthrough.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_passthrough.png; sourceTree = "<group>"; };
 		91CB2E2D24B96FD100D58E9E /* powerup_speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_speed.png; sourceTree = "<group>"; };
+		91E0F3C424BA229F00853366 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = "../../../Downloads/irrKlang-64bit-1.5.0/bin/macosx-gcc/libirrklang.dylib"; sourceTree = "<group>"; };
 		91F3E283239C6795009563D3 /* openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F3E286239C6795009563D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		91F3E28E239C67A6009563D3 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = ../../../../../usr/local/Cellar/glfw/3.3/include/GLFW/glfw3.h; sourceTree = "<group>"; };
@@ -509,6 +528,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91E0F3C524BA229F00853366 /* libirrklang.dylib in Frameworks */,
 				912EC60624A93F6700D13CE7 /* libglfw.3.3.dylib in Frameworks */,
 				912EC60524A939A300D13CE7 /* OpenGL.framework in Frameworks */,
 			);
@@ -968,9 +988,22 @@
 			path = openGL/Levels;
 			sourceTree = "<group>";
 		};
+		91E0F3C824BA268900853366 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				91536CE524BA27110072F03B /* bleep.mp3 */,
+				91536CE624BA27110072F03B /* bleep.wav */,
+				91536CE724BA27110072F03B /* breakout.mp3 */,
+				91536CE924BA27110072F03B /* powerup.wav */,
+				91536CE824BA27110072F03B /* solid.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		91F3E27A239C6795009563D3 = {
 			isa = PBXGroup;
 			children = (
+				91E0F3C824BA268900853366 /* Sounds */,
 				91CB2E0A24B8D4F300D58E9E /* Levels */,
 				917856C524B8B18800F8A754 /* Shaders */,
 				91F6E40324B110F4008919AB /* Assets */,
@@ -1022,6 +1055,7 @@
 		91F3E28D239C67A6009563D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91E0F3C424BA229F00853366 /* libirrklang.dylib */,
 				91F3E294239C6888009563D3 /* libglfw.3.3.dylib */,
 				91F3E292239C686D009563D3 /* OpenGL.framework */,
 				91F3E28F239C67C4009563D3 /* GLFW */,
@@ -1264,10 +1298,12 @@
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/glfw/3.3/include/**",
 					"/usr/local/include/glm/**",
+					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/include/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3/lib,
+					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/bin/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1283,10 +1319,12 @@
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/glfw/3.3/include/**",
 					"/usr/local/include/glm/**",
+					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/include/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3/lib,
+					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/bin/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
