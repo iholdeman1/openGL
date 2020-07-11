@@ -15,6 +15,11 @@
 		91536CF224BA27BC0072F03B /* powerup.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE924BA27110072F03B /* powerup.wav */; };
 		91536CF324BA27BC0072F03B /* solid.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536CE824BA27110072F03B /* solid.wav */; };
 		91536D0324BA29E20072F03B /* libirrklang.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91E0F3C424BA229F00853366 /* libirrklang.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		91536D0724BA36390072F03B /* text_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91536D0524BA36390072F03B /* text_renderer.cpp */; };
+		91536D0924BA50870072F03B /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91536D0824BA50870072F03B /* libfreetype.6.dylib */; };
+		91536D0C24BA52010072F03B /* text_2d.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536D0A24BA51BE0072F03B /* text_2d.vert */; };
+		91536D0D24BA52010072F03B /* text_2d.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91536D0B24BA51C80072F03B /* text_2d.frag */; };
+		916E5EBA24BA53BD00DF0497 /* OCRAEXT.TTF in CopyFiles */ = {isa = PBXBuildFile; fileRef = 916E5EB924BA53B600DF0497 /* OCRAEXT.TTF */; };
 		917856C824B8B1A000F8A754 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 917856C624B8B18800F8A754 /* shader.vert */; };
 		917856C924B8B1A000F8A754 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 917856C724B8B18800F8A754 /* shader.frag */; };
 		917856CC24B8BDA100F8A754 /* game_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 917856CA24B8BDA100F8A754 /* game_object.cpp */; };
@@ -56,6 +61,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				916E5EBA24BA53BD00DF0497 /* OCRAEXT.TTF in CopyFiles */,
+				91536D0C24BA52010072F03B /* text_2d.vert in CopyFiles */,
+				91536D0D24BA52010072F03B /* text_2d.frag in CopyFiles */,
 				91536CEF24BA27BC0072F03B /* bleep.mp3 in CopyFiles */,
 				91536CF024BA27BC0072F03B /* bleep.wav in CopyFiles */,
 				91536CF124BA27BC0072F03B /* breakout.mp3 in CopyFiles */,
@@ -93,6 +101,12 @@
 		91536CE724BA27110072F03B /* breakout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = breakout.mp3; path = openGL/Sounds/breakout.mp3; sourceTree = SOURCE_ROOT; };
 		91536CE824BA27110072F03B /* solid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = solid.wav; path = openGL/Sounds/solid.wav; sourceTree = SOURCE_ROOT; };
 		91536CE924BA27110072F03B /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = powerup.wav; path = openGL/Sounds/powerup.wav; sourceTree = SOURCE_ROOT; };
+		91536D0524BA36390072F03B /* text_renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = text_renderer.cpp; sourceTree = "<group>"; };
+		91536D0624BA36390072F03B /* text_renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = text_renderer.hpp; sourceTree = "<group>"; };
+		91536D0824BA50870072F03B /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../../usr/local/Cellar/freetype/2.9.1/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
+		91536D0A24BA51BE0072F03B /* text_2d.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_2d.vert; sourceTree = "<group>"; };
+		91536D0B24BA51C80072F03B /* text_2d.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = text_2d.frag; sourceTree = "<group>"; };
+		916E5EB924BA53B600DF0497 /* OCRAEXT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = OCRAEXT.TTF; sourceTree = "<group>"; };
 		917856C624B8B18800F8A754 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		917856C724B8B18800F8A754 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		917856CA24B8BDA100F8A754 /* game_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cpp; sourceTree = "<group>"; };
@@ -528,6 +542,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91536D0924BA50870072F03B /* libfreetype.6.dylib in Frameworks */,
 				91E0F3C524BA229F00853366 /* libirrklang.dylib in Frameworks */,
 				912EC60624A93F6700D13CE7 /* libglfw.3.3.dylib in Frameworks */,
 				912EC60524A939A300D13CE7 /* OpenGL.framework in Frameworks */,
@@ -537,6 +552,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		916E5EB824BA53B600DF0497 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				916E5EB924BA53B600DF0497 /* OCRAEXT.TTF */,
+			);
+			name = Fonts;
+			path = openGL/Fonts;
+			sourceTree = "<group>";
+		};
 		917856C524B8B18800F8A754 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +568,8 @@
 				917856C724B8B18800F8A754 /* shader.frag */,
 				91CB2E2124B9479F00D58E9E /* post_processing.vert */,
 				91CB2E2224B947A800D58E9E /* post_processing.frag */,
+				91536D0A24BA51BE0072F03B /* text_2d.vert */,
+				91536D0B24BA51C80072F03B /* text_2d.frag */,
 			);
 			name = Shaders;
 			path = openGL/Shaders;
@@ -1003,6 +1029,7 @@
 		91F3E27A239C6795009563D3 = {
 			isa = PBXGroup;
 			children = (
+				916E5EB824BA53B600DF0497 /* Fonts */,
 				91E0F3C824BA268900853366 /* Sounds */,
 				91CB2E0A24B8D4F300D58E9E /* Levels */,
 				917856C524B8B18800F8A754 /* Shaders */,
@@ -1048,6 +1075,8 @@
 				91CB2E1F24B9408800D58E9E /* post_processor.hpp */,
 				91CB2E2524B95A4C00D58E9E /* powerup.cpp */,
 				91CB2E2624B95A4C00D58E9E /* powerup.hpp */,
+				91536D0524BA36390072F03B /* text_renderer.cpp */,
+				91536D0624BA36390072F03B /* text_renderer.hpp */,
 			);
 			path = openGL;
 			sourceTree = "<group>";
@@ -1055,6 +1084,7 @@
 		91F3E28D239C67A6009563D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91536D0824BA50870072F03B /* libfreetype.6.dylib */,
 				91E0F3C424BA229F00853366 /* libirrklang.dylib */,
 				91F3E294239C6888009563D3 /* libglfw.3.3.dylib */,
 				91F3E292239C686D009563D3 /* OpenGL.framework */,
@@ -1161,6 +1191,7 @@
 				91CB2E1824B8DB1000D58E9E /* background.png in Sources */,
 				91CB2E1D24B8FB7700D58E9E /* ball.cpp in Sources */,
 				917856DD24B8CF9200F8A754 /* block_solid.png in Sources */,
+				91536D0724BA36390072F03B /* text_renderer.cpp in Sources */,
 				917856DE24B8CF9200F8A754 /* block.png in Sources */,
 				917856CC24B8BDA100F8A754 /* game_object.cpp in Sources */,
 				918B2DFD24B7F19F0009B2AD /* awesomeface.png in Sources */,
@@ -1299,11 +1330,14 @@
 					"/usr/local/Cellar/glfw/3.3/include/**",
 					"/usr/local/include/glm/**",
 					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/include/**",
+					"/usr/local/opt/freetype/include/freetype2/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3/lib,
 					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/bin/**",
+					"/usr/local/opt/freetype/lib/**",
+					/usr/local/Cellar/freetype/2.9.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1320,11 +1354,14 @@
 					"/usr/local/Cellar/glfw/3.3/include/**",
 					"/usr/local/include/glm/**",
 					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/include/**",
+					"/usr/local/opt/freetype/include/freetype2/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3/lib,
 					"/Users/ianholdeman/Downloads/irrKlang-64bit-1.5.0/bin/**",
+					"/usr/local/opt/freetype/lib/**",
+					/usr/local/Cellar/freetype/2.9.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -10,9 +10,10 @@
 
 // System Includes
 #include <iostream>
+#include <string>
 
 Game::Game(const unsigned int width, const unsigned int height)
-: state_(GameState::ACTIVE), width_(width), height_(height) {
+: state_(GameState::MENU), width_(width), height_(height), level_(0), lives_(3) {
 
 }
 
@@ -21,6 +22,7 @@ Game::~Game() {
   delete player_;
   delete ball_;
   delete effects_;
+  delete text_renderer_;
   sound_engine_->drop();
 }
 
@@ -69,8 +71,6 @@ void Game::init() {
   levels_.push_back(two);
   levels_.push_back(three);
   levels_.push_back(four);
-
-  level_ = 0;
   
   // Set up the player
   glm::vec2 player_position = glm::vec2(width_ / 2.0f - PLAYER_SIZE.x / 2.0f, height_ - PLAYER_SIZE.y);
@@ -80,12 +80,44 @@ void Game::init() {
   glm::vec2 ball_position = player_position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
   ball_ = new Ball(ball_position, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::get_texture("face"));
   
+  // Set up text renderer
+  text_renderer_ = new TextRenderer(width_, height_);
+  text_renderer_->load("OCRAEXT.TTF", 24);
+  
   // Set up the sound engine
   sound_engine_ = irrklang::createIrrKlangDevice();
   sound_engine_->play2D("breakout.mp3", true);
 }
 
 void Game::process_input(const float delta_time) {
+  if (state_ == GameState::MENU) {
+    if (keys_[GLFW_KEY_ENTER] && !keys_processed_[GLFW_KEY_ENTER]) {
+      state_ = GameState::ACTIVE;
+      keys_processed_[GLFW_KEY_ENTER] = true;
+    }
+    if (keys_[GLFW_KEY_W] && !keys_processed_[GLFW_KEY_W]) {
+      level_ = (level_ + 1) % 4;
+      keys_processed_[GLFW_KEY_W] = true;
+    }
+    if (keys_[GLFW_KEY_S] && !keys_processed_[GLFW_KEY_S]) {
+      if (level_ > 0) {
+        level_--;
+      }
+      else {
+        level_ = 3;
+      }
+      keys_processed_[GLFW_KEY_S] = true;
+    }
+  }
+  
+  if (state_ == GameState::WIN) {
+    if (keys_[GLFW_KEY_ENTER]) {
+      keys_processed_[GLFW_KEY_ENTER] = true;
+      effects_->set_chaos(false);
+      state_ = GameState::MENU;
+    }
+  }
+  
   if (state_ == GameState::ACTIVE) {
     const float velocity = PLAYER_VELOCITY * delta_time;
     const glm::vec2 current_player_position = player_->get_position();
@@ -129,13 +161,26 @@ void Game::update(const float delta_time) {
   
   // Check loss condition
   if (ball_->get_position().y >= height_) {
+    lives_--;
+    
+    if (lives_ == 0) {
+      reset_level();
+      state_ = GameState::MENU;
+    }
+    reset_player();
+  }
+  
+  // Check win condition
+  if (state_ == GameState::ACTIVE && levels_[level_].is_complete()) {
     reset_level();
     reset_player();
+    effects_->set_chaos(true);
+    state_ = GameState::WIN;
   }
 }
 
 void Game::render() {
-	if (state_ == GameState::ACTIVE) {
+	if (state_ == GameState::ACTIVE || state_ == GameState::MENU || state_ == GameState::WIN) {
     // Begin rendering to postprocessing framebuffer
     effects_->begin_render();
     
@@ -159,11 +204,28 @@ void Game::render() {
     
     // Render postprocessing quad
     effects_->render(glfwGetTime());
+
+    // Render text (not included in postprocessing)
+    text_renderer_->render_text("Lives: " + std::to_string(lives_), 5.0f, 5.0f, 1.0f);
 	}
+
+  if (state_ == GameState::MENU) {
+    text_renderer_->render_text("Press ENTER to start", 250.0f, height_ / 2.0f, 1.0f);
+    text_renderer_->render_text("Press W or S to select level", 245.0f, height_ / 2.0f + 20.0f, 0.75f);
+  }
+
+  if (state_ == GameState::WIN) {
+    text_renderer_->render_text("You WON!!!", 320.0f, height_ / 2.0f - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+    text_renderer_->render_text("Press ENTER to retry or ESC to quit", 130.0f, height_ / 2.0f, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
+  }
 }
 
 void Game::set_key(const unsigned int key, const bool flag) {
   keys_[key] = flag;
+  
+  if (keys_[key] && keys_processed_[key]) {
+    keys_processed_[key] = false;
+  }
 }
 
 void Game::calculate_collisions() {
@@ -345,6 +407,8 @@ void Game::reset_level() {
     default:
       break;
   }
+
+  lives_ = 3;
 }
 
 void Game::reset_player() {

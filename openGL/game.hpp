@@ -23,6 +23,7 @@
 #include "powerup.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
+#include "text_renderer.hpp"
 
 enum class GameState {
   ACTIVE,
@@ -66,13 +67,14 @@ private:
   
   GameState state_;
   bool keys_[1024];
+  bool keys_processed_[1024];
   unsigned int width_;
   unsigned int height_;
   float shake_time_ = 0.0f;
   
   std::vector<GameLevel> levels_;
   unsigned int level_;
-  
+  unsigned int lives_;
   std::vector<PowerUp> powerups_;
   
   GameObject *player_;
@@ -80,6 +82,7 @@ private:
   PostProcessor *effects_;
   SpriteRenderer *renderer_;
   irrklang::ISoundEngine *sound_engine_;
+  TextRenderer *text_renderer_;
   
   // Constants
   const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);
