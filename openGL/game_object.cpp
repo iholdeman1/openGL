@@ -45,3 +45,7 @@ void GameObject::set_position(const float x, const float y) {
 void GameObject::set_size(const glm::vec2 size) {
   size_ = size;
 }
+
+void GameObject::set_color(const glm::vec3 color) {
+	color_ = color;
+}

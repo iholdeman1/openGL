@@ -31,6 +31,11 @@ public:
   void render(const float time);
   
   void set_shake(const bool flag);
+  void set_confuse(const bool flag);
+  void set_chaos(const bool flag);
+
+  bool is_confused() const { return confuse_; };
+  bool is_chaotic() const { return chaos_; };
 
 private:
   void init_render_data();

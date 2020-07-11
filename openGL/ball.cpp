@@ -8,14 +8,16 @@
 
 #include "ball.hpp"
 
-Ball::Ball() : GameObject(), radius_(12.5f), stuck_(true) {
+Ball::Ball() : GameObject(), radius_(12.5f), stuck_(true), sticky_(false), pass_through_(false) {
   
 }
 
 Ball::Ball(glm::vec2 position, float radius, glm::vec2 velocity, Texture2D sprite)
   : GameObject(position, glm::vec2(radius * 2.0f, radius * 2.0f), sprite, glm::vec3(1.0f), velocity),
     radius_(radius),
-    stuck_(true) {
+    stuck_(true),
+    sticky_(false),
+    pass_through_(false) {
   
 }
 
@@ -62,8 +64,18 @@ void Ball::reset(const glm::vec2 position, const glm::vec2 velocity) {
   position_ = position;
   velocity_ = velocity;
   stuck_ = true;
+  sticky_ = false;
+  pass_through_ = false;
 }
 
-void Ball::unstick() {
-  stuck_ = false;
+void Ball::set_stuck(const bool flag) {
+  stuck_ = flag;
+}
+
+void Ball::set_sticky(const bool flag) {
+  sticky_ = flag;
+}
+
+void Ball::set_pass_through(const bool flag) {
+  pass_through_ = flag;
 }

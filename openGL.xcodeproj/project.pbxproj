@@ -31,6 +31,13 @@
 		91CB2E2024B9408800D58E9E /* post_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E1E24B9408800D58E9E /* post_processor.cpp */; };
 		91CB2E2324B947E700D58E9E /* post_processing.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91CB2E2124B9479F00D58E9E /* post_processing.vert */; };
 		91CB2E2424B947E700D58E9E /* post_processing.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91CB2E2224B947A800D58E9E /* post_processing.frag */; };
+		91CB2E2724B95A4C00D58E9E /* powerup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2524B95A4C00D58E9E /* powerup.cpp */; };
+		91CB2E2E24B96FD900D58E9E /* powerup_chaos.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2B24B96FD000D58E9E /* powerup_chaos.png */; };
+		91CB2E2F24B96FD900D58E9E /* powerup_confuse.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2924B96FD000D58E9E /* powerup_confuse.png */; };
+		91CB2E3024B96FD900D58E9E /* powerup_increase.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2A24B96FD000D58E9E /* powerup_increase.png */; };
+		91CB2E3124B96FD900D58E9E /* powerup_passthrough.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2C24B96FD100D58E9E /* powerup_passthrough.png */; };
+		91CB2E3224B96FD900D58E9E /* powerup_speed.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2D24B96FD100D58E9E /* powerup_speed.png */; };
+		91CB2E3324B96FD900D58E9E /* powerup_sticky.png in Sources */ = {isa = PBXBuildFile; fileRef = 91CB2E2824B96FD000D58E9E /* powerup_sticky.png */; };
 		91F3E287239C6795009563D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F3E286239C6795009563D3 /* main.cpp */; };
 		91F3E296239C6888009563D3 /* libglfw.3.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 91F3E294239C6888009563D3 /* libglfw.3.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -479,6 +486,14 @@
 		91CB2E1F24B9408800D58E9E /* post_processor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = post_processor.hpp; sourceTree = "<group>"; };
 		91CB2E2124B9479F00D58E9E /* post_processing.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = post_processing.vert; sourceTree = "<group>"; };
 		91CB2E2224B947A800D58E9E /* post_processing.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = post_processing.frag; sourceTree = "<group>"; };
+		91CB2E2524B95A4C00D58E9E /* powerup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = powerup.cpp; sourceTree = "<group>"; };
+		91CB2E2624B95A4C00D58E9E /* powerup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = powerup.hpp; sourceTree = "<group>"; };
+		91CB2E2824B96FD000D58E9E /* powerup_sticky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_sticky.png; sourceTree = "<group>"; };
+		91CB2E2924B96FD000D58E9E /* powerup_confuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_confuse.png; sourceTree = "<group>"; };
+		91CB2E2A24B96FD000D58E9E /* powerup_increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_increase.png; sourceTree = "<group>"; };
+		91CB2E2B24B96FD000D58E9E /* powerup_chaos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_chaos.png; sourceTree = "<group>"; };
+		91CB2E2C24B96FD100D58E9E /* powerup_passthrough.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_passthrough.png; sourceTree = "<group>"; };
+		91CB2E2D24B96FD100D58E9E /* powerup_speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup_speed.png; sourceTree = "<group>"; };
 		91F3E283239C6795009563D3 /* openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F3E286239C6795009563D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		91F3E28E239C67A6009563D3 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = ../../../../../usr/local/Cellar/glfw/3.3/include/GLFW/glfw3.h; sourceTree = "<group>"; };
@@ -998,6 +1013,8 @@
 				91CB2E1C24B8FB7700D58E9E /* ball.hpp */,
 				91CB2E1E24B9408800D58E9E /* post_processor.cpp */,
 				91CB2E1F24B9408800D58E9E /* post_processor.hpp */,
+				91CB2E2524B95A4C00D58E9E /* powerup.cpp */,
+				91CB2E2624B95A4C00D58E9E /* powerup.hpp */,
 			);
 			path = openGL;
 			sourceTree = "<group>";
@@ -1026,6 +1043,12 @@
 		91F6E40324B110F4008919AB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				91CB2E2B24B96FD000D58E9E /* powerup_chaos.png */,
+				91CB2E2924B96FD000D58E9E /* powerup_confuse.png */,
+				91CB2E2A24B96FD000D58E9E /* powerup_increase.png */,
+				91CB2E2C24B96FD100D58E9E /* powerup_passthrough.png */,
+				91CB2E2D24B96FD100D58E9E /* powerup_speed.png */,
+				91CB2E2824B96FD000D58E9E /* powerup_sticky.png */,
 				91CB2E1924B8DE7E00D58E9E /* paddle.png */,
 				91CB2E1724B8DB0B00D58E9E /* background.png */,
 				917856D624B8CF7500F8A754 /* block_solid.png */,
@@ -1094,6 +1117,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CB2E2E24B96FD900D58E9E /* powerup_chaos.png in Sources */,
+				91CB2E2F24B96FD900D58E9E /* powerup_confuse.png in Sources */,
+				91CB2E3024B96FD900D58E9E /* powerup_increase.png in Sources */,
+				91CB2E3124B96FD900D58E9E /* powerup_passthrough.png in Sources */,
+				91CB2E3224B96FD900D58E9E /* powerup_speed.png in Sources */,
+				91CB2E3324B96FD900D58E9E /* powerup_sticky.png in Sources */,
 				91CB2E1A24B8DE8400D58E9E /* paddle.png in Sources */,
 				91CB2E1824B8DB1000D58E9E /* background.png in Sources */,
 				91CB2E1D24B8FB7700D58E9E /* ball.cpp in Sources */,
@@ -1108,6 +1137,7 @@
 				918B2DEC24B7B2A70009B2AD /* texture.cpp in Sources */,
 				91F3E287239C6795009563D3 /* main.cpp in Sources */,
 				919E6E2024B7A93A00AE9ED5 /* game.cpp in Sources */,
+				91CB2E2724B95A4C00D58E9E /* powerup.cpp in Sources */,
 				91CB2E2024B9408800D58E9E /* post_processor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

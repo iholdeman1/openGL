@@ -131,3 +131,11 @@ void PostProcessor::init_render_data() {
 void PostProcessor::set_shake(const bool flag) {
   shake_ = flag;
 }
+
+void PostProcessor::set_confuse(const bool flag) {
+	confuse_ = flag;
+}
+
+void PostProcessor::set_chaos(const bool flag) {
+	chaos_ = flag;
+}
