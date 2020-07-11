@@ -9,6 +9,9 @@
 #ifndef game_hpp
 #define game_hpp
 
+// Library Includes
+#include <irrKlang.h>
+
 // System Includes
 #include <vector>
 
@@ -76,6 +79,7 @@ private:
   Ball *ball_;
   PostProcessor *effects_;
   SpriteRenderer *renderer_;
+  irrklang::ISoundEngine *sound_engine_;
   
   // Constants
   const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);
